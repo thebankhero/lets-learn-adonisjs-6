@@ -1,0 +1,16 @@
+@layout({ title: movie.title })
+  @slot('meta')
+    <meta name="description" content="{{ movie.summary }}" />
+  @end
+  <h1>
+    {{ movie.title }}
+  </h1>
+
+  @if(movie.abstract)
+    <div class="my-8 bg-slate-100 rounded-xl p-8">
+      {{{ movie.abstract }}}
+    </div>
+  @else
+    No Abstract
+  @endif
+@end

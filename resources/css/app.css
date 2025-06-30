@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+nav li { display: inline }
+
+h1 {
+  @apply text-3xl font-bold mb-3 mt-6;
+}

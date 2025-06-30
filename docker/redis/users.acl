@@ -1,0 +1,3 @@
+user default on >0vRjGNIJlpIvnI3EhC95mb0XgPEjttFU ~* +@all
+user lets-learn-adonis-dev on >ycE9iCYW8p6600J9KxspZRlE63q6JCO6 ~lets-learn-adonis-dev:* +@all
+user lets-learn-adonis-prod on >X9OgpVTymx829M0PhNUQtju4hxZA39pn ~lets-learn-adonis-prod:* +@all
