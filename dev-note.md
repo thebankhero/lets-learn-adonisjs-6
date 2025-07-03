@@ -76,3 +76,6 @@ node ace db:seed --files=database/seeders/fake_seeder.ts
 
 # Model (Migration , Controller , Factory)
 node ace make:model profile -mcf
+
+# Validator
+node ace make:validator auth
