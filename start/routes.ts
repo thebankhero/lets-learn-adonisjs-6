@@ -8,6 +8,7 @@
 */
 import router from '@adonisjs/core/services/router'
 
+const RegisterController = () => import('#controllers/auth/register_controller')
 const WritersController = () => import('#controllers/writers_controller')
 const DirectorsController = () => import('#controllers/directors_controller')
 const RedisController = () => import('#controllers/redis_controller')
@@ -28,3 +29,11 @@ router.get('/writers/:id', [WritersController, 'show']).as('writers.show')
 
 router.delete('/redis/flush', [RedisController, 'flush']).as('redis.flush')
 router.delete('/redis/:slug', [RedisController, 'destroy']).as('redis.destroy')
+
+router
+  .group(() => {
+    router.get('/register', [RegisterController, 'show']).as('register.show')
+    router.post('/register', [RegisterController, 'store']).as('register.store')
+  })
+  .prefix('/auth')
+  .as('auth')
