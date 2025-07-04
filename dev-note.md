@@ -82,3 +82,6 @@ node ace make:validator auth
 
 # Rules
 node ace make:preload rules/unique
+
+# Middleware
+node ace make:middleware silent_auth
