@@ -79,3 +79,6 @@ node ace make:model profile -mcf
 
 # Validator
 node ace make:validator auth
+
+# Rules
+node ace make:preload rules/unique
