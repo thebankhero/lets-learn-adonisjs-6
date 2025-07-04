@@ -85,3 +85,6 @@ node ace make:preload rules/unique
 
 # Middleware
 node ace make:middleware silent_auth
+
+# Remember Me Token
+node ace make:migration remember_me_tokens
