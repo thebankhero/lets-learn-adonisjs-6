@@ -3,7 +3,7 @@ import Movie from '#models/movie'
 type MovieSortOption = {
   id: string
   text: string
-  field: keyof Movie
+  field: string
   dir: 'asc' | 'desc' | undefined
 }
 export default class MovieService {
@@ -12,6 +12,8 @@ export default class MovieService {
     { id: 'title_desc', text: 'Title (desc)', field: 'title', dir: 'desc' },
     { id: 'releasedAt_asc', text: 'Release At (asc)', field: 'releasedAt', dir: 'asc' },
     { id: 'releasedAt_desc', text: 'Release At (desc)', field: 'releasedAt', dir: 'desc' },
+    { id: 'writer_asc', text: 'Writer Name (asc)', field: 'cineasts.last_name', dir: 'asc' },
+    { id: 'writer_desc', text: 'Writer Name (desc)', field: 'cineasts.last_name', dir: 'desc' },
   ]
 
   static getFiltered(filters: Record<string, any>) {
@@ -21,6 +23,9 @@ export default class MovieService {
     return Movie.query()
       .if(filters.search, (query) => query.whereILike('title', `%${filters.search}%`))
       .if(filters.status, (query) => query.where('statusId', filters.status))
+      .if(['writer_asc', 'writer_desc'].includes(sort.id), (query) => {
+        query.join('cineasts', 'cineasts.id', 'writer_id').select('movies.*')
+      })
       .preload('director')
       .preload('writer')
       .preload('status')
