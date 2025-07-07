@@ -94,4 +94,6 @@ node ace make:migration remember_me_tokens
 node ace make:middleware admin
 - named
 
-node ace make:model watchlist -mc
+# Watchlist
+node ace make:model watchlist -m
+node ace make:controller watchlist index toggle toggleWatched

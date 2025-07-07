@@ -68,7 +68,7 @@ export default class Movie extends BaseModel {
   declare writer: BelongsTo<typeof Cineast>
 
   @hasMany(() => Watchlist)
-  declare watchlists: HasMany<typeof Watchlist>
+  declare watchlist: HasMany<typeof Watchlist>
 
   @manyToMany(() => Cineast, {
     pivotTable: 'crew_movies',
