@@ -93,3 +93,5 @@ node ace make:migration remember_me_tokens
 # Admin
 node ace make:middleware admin
 - named
+
+node ace make:model watchlist -mc

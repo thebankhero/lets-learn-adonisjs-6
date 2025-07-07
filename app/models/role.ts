@@ -2,6 +2,7 @@ import { BaseModel, column, hasMany } from '@adonisjs/lucid/orm'
 import type { HasMany } from '@adonisjs/lucid/types/relations'
 import { DateTime } from 'luxon'
 import User from './user.js'
+import Watchlist from './watchlist.js'
 
 export default class Role extends BaseModel {
   @column({ isPrimary: true })
@@ -18,4 +19,7 @@ export default class Role extends BaseModel {
 
   @hasMany(() => User)
   declare users: HasMany<typeof User>
+
+  @hasMany(() => Watchlist)
+  declare watchlists: HasMany<typeof Watchlist>
 }
