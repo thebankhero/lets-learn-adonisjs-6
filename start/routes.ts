@@ -28,7 +28,8 @@ router
   .as('movies.show')
   .where('slug', router.matchers.slug())
 
-router.post('watchlists/:movieId/toggle', [WatchlistsController, 'toggle']).as('watchlists.toggle')
+router.get('/watchlists', [WatchlistsController, 'index']).as('watchlists.index')
+router.post('/watchlists/:movieId/toggle', [WatchlistsController, 'toggle']).as('watchlists.toggle')
 
 router.get('/directors', [DirectorsController, 'index']).as('directors.index')
 router.get('/directors/:id', [DirectorsController, 'show']).as('directors.show')
