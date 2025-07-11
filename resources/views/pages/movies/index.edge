@@ -54,14 +54,14 @@
 
     @if(movies.hasPages)
       <a
-        href="{{ movies.getUrl(movies.firstPage) }}{{ qs ? `&${qs}` : '' }}"
+        href="{{ movies.getUrl(movies.firstPage) }}"
         class="w-8 h-8 flex items-center justify-center border border-slate-200 rounded"
       >&lt;&lt;</a>
     @endif
 
     @if(movies.currentPage > movies.firstPage)
       <a
-        href="{{ movies.getPreviousPageUrl() }}{{ qs ? `&${qs}` : '' }}"
+        href="{{ movies.getPreviousPageUrl() }}"
         class="w-8 h-8 flex items-center justify-center border border-slate-200 rounded"
       >&lt;</a>
     @endif
@@ -82,14 +82,14 @@
 
     @if(movies.currentPage < movies.lastPage)
       <a
-        href="{{ movies.getNextPageUrl() }}{{ qs ? `&${qs}` : '' }}"
+        href="{{ movies.getNextPageUrl() }}"
         class="w-8 h-8 flex items-center justify-center border border-slate-200 rounded"
       >&gt;</a>
     @endif
 
     @if(movies.hasPages)
       <a
-        href="{{ movies.getUrl(movies.lastPage) }}{{ qs ? `&${qs}` : '' }}"
+        href="{{ movies.getUrl(movies.lastPage) }}"
         class="w-8 h-8 flex items-center justify-center border border-slate-200 rounded"
       >&gt;&gt;</a>
     @endif
