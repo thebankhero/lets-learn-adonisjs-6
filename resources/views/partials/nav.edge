@@ -14,6 +14,10 @@
           Watchlist
         </a>
 
+        <a href="{{ route('profiles.edit') }}" class="text-xs">
+          Edit Profile
+        </a>
+
         <form method="post" action="{{ route('auth.logout') }}">
           {{ csrfField() }}
 

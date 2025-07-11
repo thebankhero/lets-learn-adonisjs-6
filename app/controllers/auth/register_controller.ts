@@ -14,10 +14,13 @@ export default class RegisterController {
     // 2. Create our user
     const user = await User.create(data)
 
-    // 3. Login that user
+    // 3. Create Profile for user
+    await user.related('profile').create({})
+
+    // 4. Login that user
     await auth.use('web').login(user)
 
-    // 4. Return the user back to home
+    // 5. Return the user back to home
     return response.redirect().toRoute('home')
   }
 }
