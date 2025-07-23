@@ -13,12 +13,15 @@
     
     
     @vite(['resources/js/app.js', 'resources/css/app.css'])
-
   </head>
 
   <body>
     <div class="max-w-3xl mx-auto mt-6">
       @include('partials/nav')
+
+      <div class="flex items-center gap-4 text-xs py-3 border-y border-slate-300">
+        <a href="{{ route('admin.dashboard') }}">Dashboard</a>
+      </div>
 
       {{{ await $slots.main() }}}
     </div>

@@ -1,8 +1,10 @@
-import edge from 'edge.js'
-import { edgeIconify, addCollection } from 'edge-iconify'
+import Roles from '#enum/roles'
 import { icons as phIcons } from '@iconify-json/ph'
+import { addCollection, edgeIconify } from 'edge-iconify'
+import edge from 'edge.js'
 
 addCollection(phIcons)
 
 edge.use(edgeIconify)
 edge.global('globalExample', 'Global Info')
+edge.global('Roles', Roles)
