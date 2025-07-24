@@ -2,7 +2,7 @@
   @slot('meta')
     <meta name="description" content="Movies in your watchlist" />
   @endslot
-
+  
   <form method="get" action="{{ route('watchlists.index') }}">
     <div class="flex items-end gap-3 pt-4">
       @!form.input({
@@ -22,7 +22,7 @@
           </option>
         @endeach
       @end
-
+      
       @form.input({ type: 'select', label: 'Watched', name: 'watched'})
         <option value="all" {{ html.attrs({ selected: filters.watched === 'all' }) }}>
           All
@@ -34,7 +34,7 @@
           Not Watched
         </option>
       @end
-
+      
       @form.input({ type: 'select', label: 'Sort', name: 'sort'})
         @each(item in movieSortOptions)
           <option value="{{ item.id }}" {{ html.attrs({ selected: item.id == filters.sort }) }}>
@@ -42,11 +42,11 @@
           </option>
         @endeach
       @end
-
+      
       @button({type: 'submit'})
         Search
       @end
-
+      
     </div>
   </form>
 
@@ -73,48 +73,5 @@
     @end
   </div>
 
-  <div class="flex items-center gap-2 pt-3 pb-6">
-
-    @if(movies.hasPages)
-      <a
-        href="{{ movies.getUrl(movies.firstPage) }}"
-        class="w-8 h-8 flex items-center justify-center border border-slate-200 rounded"
-      >&lt;&lt;</a>
-    @endif
-
-    @if(movies.currentPage > movies.firstPage)
-      <a
-        href="{{ movies.getPreviousPageUrl() }}"
-        class="w-8 h-8 flex items-center justify-center border border-slate-200 rounded"
-      >&lt;</a>
-    @endif
-
-    @each(item in pagination)
-      <a
-        {{ html.attrs({
-            href: item.url,
-            class: [
-              'w-8 h-8 flex items-center justify-center border border-slate-200 rounded',
-              { 'bg-slate-100 border-indigo-500': item.isActive }
-            ],
-          }) }}
-      >
-        {{ item.page }}
-      </a>
-    @endeach
-
-    @if(movies.currentPage < movies.lastPage)
-      <a
-        href="{{ movies.getNextPageUrl() }}"
-        class="w-8 h-8 flex items-center justify-center border border-slate-200 rounded"
-      >&gt;</a>
-    @endif
-
-    @if(movies.hasPages)
-      <a
-        href="{{ movies.getUrl(movies.lastPage) }}"
-        class="w-8 h-8 flex items-center justify-center border border-slate-200 rounded"
-      >&gt;&gt;</a>
-    @endif
-  </div>
+  @!pagination({ paginator: movies })
 @end

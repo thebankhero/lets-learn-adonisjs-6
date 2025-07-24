@@ -97,3 +97,6 @@ node ace make:middleware admin
 # Watchlist
 node ace make:model watchlist -m
 node ace make:controller watchlist index toggle toggleWatched
+
+# Tailwind CSS (Flowbite)
+https://flowbite.com/docs/components/tables/
