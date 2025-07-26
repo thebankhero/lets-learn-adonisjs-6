@@ -107,3 +107,6 @@ router.resource('movies', AdminMoviesController)
 
 # File Uploads
 https://docs.adonisjs.com/guides/basics/file-uploads#serving-files
+
+# Alpinejs
+https://alpinejs.dev/
