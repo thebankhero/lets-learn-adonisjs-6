@@ -58,6 +58,6 @@ export default class MovieService {
       name: fileName,
     })
 
-    return `/posters/${fileName}`
+    return `/storage/posters/${fileName}`
   }
 }
