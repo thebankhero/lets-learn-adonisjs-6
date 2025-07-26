@@ -55,11 +55,6 @@ export default class MoviesController {
   }
 
   /**
-   * Show individual record
-   */
-  async show({ params }: HttpContext) {}
-
-  /**
    * Edit individual record
    */
   async edit({ view, params }: HttpContext) {
@@ -109,5 +104,12 @@ export default class MoviesController {
   /**
    * Delete record
    */
-  async destroy({ params }: HttpContext) {}
+  async destroy({ response, params }: HttpContext) {
+    const movie = await Movie.findOrFail(params.id)
+
+    await movie.related('watchlist').query().delete()
+    await movie.delete()
+
+    return response.redirect().back()
+  }
 }
