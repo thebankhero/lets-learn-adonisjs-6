@@ -3,6 +3,9 @@ import Movie from '#models/movie'
 import MovieStatus from '#models/movie_status'
 import User from '#models/user'
 import { movieFilterValidator } from '#validators/movie_filter'
+import { MultipartFile } from '@adonisjs/core/bodyparser'
+import { cuid } from '@adonisjs/core/helpers'
+import app from '@adonisjs/core/services/app'
 import { Infer } from '@vinejs/vine/types'
 
 type MovieSortOption = {
@@ -46,5 +49,15 @@ export default class MovieService {
     const cineasts = await Cineast.query().orderBy('lastName')
 
     return { statuses, cineasts }
+  }
+
+  static async storePoster(poster: MultipartFile) {
+    const fileName = `${cuid()}.${poster.extname}`
+
+    await poster.move(app.makePath('storage/posters'), {
+      name: fileName,
+    })
+
+    return `/posters/${fileName}`
   }
 }
