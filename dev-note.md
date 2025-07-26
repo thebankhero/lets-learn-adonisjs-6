@@ -100,3 +100,7 @@ node ace make:controller watchlist index toggle toggleWatched
 
 # Tailwind CSS (Flowbite)
 https://flowbite.com/docs/components/tables/
+
+# Routes
+node ace list:routes
+router.resource('movies', AdminMoviesController)
