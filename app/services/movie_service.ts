@@ -2,6 +2,7 @@ import Cineast from '#models/cineast'
 import Movie from '#models/movie'
 import MovieStatus from '#models/movie_status'
 import User from '#models/user'
+import { movieValidator } from '#validators/movie'
 import { movieFilterValidator } from '#validators/movie_filter'
 import { MultipartFile } from '@adonisjs/core/bodyparser'
 import { cuid } from '@adonisjs/core/helpers'
@@ -59,5 +60,31 @@ export default class MovieService {
     })
 
     return `/storage/posters/${fileName}`
+  }
+
+  static async syncCastAndCrew(
+    movie: Movie,
+    cast: Infer<typeof movieValidator>['cast'],
+    crew: Infer<typeof movieValidator>['crew']
+  ) {
+    const crewMembers = crew?.reduce<Record<number, { title: string; sort_order: number }>>(
+      (acc, row, index) => {
+        acc[row.id] = { title: row.title, sort_order: index }
+
+        return acc
+      },
+      {}
+    )
+
+    const castMembers = cast?.reduce<
+      Record<number, { character_name: string; sort_order: number }>
+    >((acc, row, index) => {
+      acc[row.id] = { character_name: row.character_name, sort_order: index }
+
+      return acc
+    }, {})
+
+    await movie.related('crewMembers').sync(crewMembers ?? [])
+    await movie.related('castMembers').sync(castMembers ?? [])
   }
 }
