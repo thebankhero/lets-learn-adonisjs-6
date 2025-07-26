@@ -3,7 +3,6 @@
     Create A New Movie
   </h1>
 
-  {{ inspect(flashMessages.all()) }}
   <form method="post" action="{{ route('admin.movies.store') }}" class="flex flex-col gap-4">
     {{ csrfField() }}
     @!form.input({ label: 'Title', name: 'title' })
@@ -17,7 +16,7 @@
         </option>
       @end
     @end
-    
+
     @form.input({ type: 'select', label: 'Writer', name: 'writerId' })
       @each(cineast in cineasts)
         <option value="{{ cineast.id }}">
@@ -25,7 +24,7 @@
         </option>
       @end
     @end
-    
+
     @form.input({ type: 'select', label: 'Director', name: 'directorId' })
       @each(cineast in cineasts)
         <option value="{{ cineast.id }}">
@@ -33,7 +32,7 @@
         </option>
       @end
     @end
-    
+
     @!form.input({ type: 'textarea', label: 'Summary', name: 'summary' })
 
     @!form.input({ type: 'textarea', label: 'Abstract', name: 'abstract' })
